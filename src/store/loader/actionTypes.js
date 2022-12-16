@@ -1,0 +1,1 @@
+export const SET_AUTH_LOADING = 'loader/SET_AUTH_LOADING';
