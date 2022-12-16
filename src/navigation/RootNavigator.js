@@ -2,19 +2,18 @@ import React, {useEffect , useState} from 'react';
 import RNBootSplash from 'react-native-bootsplash';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {useAuth} from 'core';
 import {NavigationContainer} from './NavigationContainer';
 import {TabNavigator} from './TabNavigator';
 import {AuthNavigator} from './AuthNavigator';
 import {ThemeProvider} from '~ui';
-import {getToken} from '~core/Auth/utils';
+import { getItem } from '~utils/mmkv';
 
 const Stack = createStackNavigator();
 
 export const Root = () => {
   const [status, setStatus] = useState(null);
   const checkAuth = async () => {
-    const token = await getToken();
+    const token = await getItem('token');
     if (token !== null) {
       setStatus('signIn');
     }

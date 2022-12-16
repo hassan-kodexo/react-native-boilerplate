@@ -9,19 +9,7 @@ import {BlurView} from '@react-native-community/blur';
 import {Text} from './Text';
 import {useTheme} from './theme';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { IS_IOS } from './constants';
-
-type Props = {
-  inputType: string;
-  isButtonDisabled?: boolean;
-  nativeID: string;
-  nextDisabled?: boolean;
-  onPressDone: () => void;
-  onPressNext?: () => void;
-  onPressPrev?: () => void;
-  prevDisabled?: boolean;
-  style?: object;
-};
+import {IS_IOS} from './constants';
 
 export const KeyboardActionBar = ({
   inputType,
@@ -33,7 +21,7 @@ export const KeyboardActionBar = ({
   onPressPrev,
   prevDisabled,
   style,
-}: Props) => {
+}) => {
   const {colors} = useTheme();
   return (
     <>
@@ -58,7 +46,7 @@ export const KeyboardActionBar = ({
                 disabled={nextDisabled}
                 onPress={onPressNext}
                 style={styles.buttonContainer}>
-                <AntDesign name="right"  size={15}/>
+                <AntDesign name="right" size={15} />
               </TouchableOpacity>
             </View>
             {inputType && (

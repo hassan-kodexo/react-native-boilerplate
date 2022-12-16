@@ -11,6 +11,11 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));
 
 // Run the saga
-sagaMiddleware.run(rootSaga);
+const sagaKeys = Object.keys(sagas);
+
+/**
+ * Add All Sagas to saga middleware
+ */
+sagaKeys.forEach(saga => sagaMiddleware.run(sagas[saga]));
 
 export default store;

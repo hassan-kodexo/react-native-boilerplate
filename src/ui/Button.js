@@ -5,10 +5,6 @@ import {
   spacing,
   border,
   backgroundColor,
-  SpacingProps,
-  BorderProps,
-  BackgroundColorProps,
-  VariantProps,
   composeRestyleFunctions,
   createRestyleComponent,
   createVariant,
@@ -16,30 +12,17 @@ import {
 
 import {Text} from './Text';
 import {View} from './View';
-import {Theme} from './theme';
 
 const buttonVariant = createVariant({themeKey: 'buttonVariants'});
-const ButtonContainer = createRestyleComponent<
-  VariantProps<Theme, 'buttonVariants'> & React.ComponentProps<typeof View>,
-  Theme
->([buttonVariant], View);
+const ButtonContainer =
+  createRestyleComponent < React.ComponentProps > ([buttonVariant], View);
 
 const restyleFunctions = composeRestyleFunctions([
-  buttonVariant as any,
+  buttonVariant,
   spacing,
   border,
   backgroundColor,
 ]);
-
-type Props = SpacingProps<Theme> &
-  VariantProps<Theme, 'buttonVariants'> &
-  BorderProps<Theme> &
-  BackgroundColorProps<Theme> & {
-    onPress: () => void;
-    label?: string;
-    outline?: boolean;
-    loading?: boolean;
-  };
 
 export const Button = ({
   onPress,
@@ -47,7 +30,7 @@ export const Button = ({
   loading = false,
   variant = 'primary',
   ...rest
-}: Props) => {
+}) => {
   const props = useRestyle(restyleFunctions, {...rest, variant});
   const textVariant = 'button_' + variant;
 
@@ -64,9 +47,7 @@ export const Button = ({
         {loading ? (
           <ActivityIndicator size="small" />
         ) : (
-          <Text variant={textVariant as Partial<keyof Theme['textVariants']>}>
-            {label}
-          </Text>
+          <Text variant={textVariant}>{label}</Text>
         )}
       </ButtonContainer>
     </TouchableOpacity>

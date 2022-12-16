@@ -1,8 +1,7 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import FlashMessage from 'react-native-flash-message';
-import {RootNavigator} from 'navigation';
-import {hydrateAuth, setI18nConfig} from '~core';
+import {RootNavigator} from '~navigation';
 import APIProvider from '~api/apiProvider';
 import {Provider} from 'react-redux';
 import store from '~store';

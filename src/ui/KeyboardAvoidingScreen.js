@@ -1,13 +1,9 @@
 import React from 'react';
 import {KeyboardAvoidingView} from 'react-native';
-import { IS_IOS } from './constants';
+import {IS_IOS} from './constants';
 import {View} from './View';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const KeyboardAvoidingScreen = ({children}: Props) => (
+export const KeyboardAvoidingScreen = ({children}) => (
   <KeyboardAvoidingView
     behavior={IS_IOS ? 'padding' : undefined}
     style={{flex: 1}}>

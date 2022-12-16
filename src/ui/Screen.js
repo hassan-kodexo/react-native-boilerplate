@@ -1,11 +1,7 @@
 import React from 'react';
 import {View} from './View';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const Screen = ({children}: Props) => (
+export const Screen = ({children}) => (
   <View
     justifyContent="center"
     flexDirection="column"
